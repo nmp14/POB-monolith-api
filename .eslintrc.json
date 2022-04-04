@@ -15,5 +15,21 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "quotes": ["error", "single"],
+        "indent": [
+            "error",
+            2,
+            {
+                "SwitchCase": 1,
+                "MemberExpression": 1,
+                "ImportDeclaration": "first"
+            }
+        ],
+        "template-curly-spacing": ["error", "always"],
+        "consistent-return": 2,
+        "@typescript-eslint/no-var-requires": 2,
+        "@typescript-eslint/ban-ts-ignore": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-empty-function": 0
     }
 }
