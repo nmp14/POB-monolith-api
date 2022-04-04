@@ -9,15 +9,18 @@ expressApp.use('/', [
 
 export class Http { // eslint-disable-line import/prefer-default-export
   private app = expressApp;
-
+  private _router: express.Router;
   private _port: string;
 
-  constructor(portNum: string) {
+  constructor(portNum: string, router: express.Router) {
     this._port = portNum || '3006';
+    this._router = router;
+    this.useRouter();
   }
 
   public set router(router: express.Router) {
-    this.app.use(router);
+    this._router = router;
+    this.useRouter();
   }
 
   public set port(port: string) {
@@ -26,6 +29,10 @@ export class Http { // eslint-disable-line import/prefer-default-export
 
   public get port(): string {
     return this._port;
+  }
+
+  private useRouter() {
+    this.app.use(this._router);
   }
 
   public init() {
